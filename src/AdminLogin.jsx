@@ -21,12 +21,12 @@ const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
    if(cred.user === username && cred.passwoed === password){
-    navigate('/adminpage')
+    navigate('/bus/adminpage')
    }
 };
 
 const navigateTO = ()=>{
-    navigate('/home')
+    navigate('/bus/home')
  }
 
 return (

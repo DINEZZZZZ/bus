@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import {  FaSignOutAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -10,7 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const navigateTO = ()=>{
-     navigate('/home')
+     navigate('/bus/home')
   }
 
 

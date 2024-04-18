@@ -12,7 +12,7 @@ const [error, setError] = useState(null);
 const navigate = useNavigate();
 
 const navigateTO = ()=>{
-    navigate('/')
+    navigate('/bus/')
  }
 
 const handleSubmit = async (e) => {
@@ -24,10 +24,10 @@ const handleSubmit = async (e) => {
         password
     });
     console.log('Signin successful:', response.data);
-    navigate('/');
+    navigate('/bus/');
     
     } catch (error) {
-        navigate('/home');
+        navigate('/bus/home');
     console.error('Signin failed:', error.response ? error.response.data : error.message);
     setError(error.response ? error.response.data.message : error.message);
     }

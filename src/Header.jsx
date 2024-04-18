@@ -10,12 +10,12 @@ function Header() {
   const navigate = useNavigate();
 
   const AdminPage = ()=>{
-    navigate('/signinAdmin')
+    navigate('/bus/signinAdmin')
   
   }
 
   const navigateTO = ()=>{
-    navigate('/')
+    navigate('/bus/')
  }
 
  

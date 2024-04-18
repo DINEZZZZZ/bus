@@ -16,14 +16,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<LandingPage />} /> 
-        <Route path='/signup' element={<SignupForm/>}/>
-        <Route path='/adminpage' element={<AdminConsole/>}/>
-        <Route path='/signinAdmin' element={<SigninAdmin/>}/>
-        <Route path='/login' element={<SigninForm/>}/>
-        <Route path="/home" element={<QRScanner />} /> 
-        <Route path="/add-student" element={<AddStudentDetails />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route exact path="/bus/" element={<LandingPage />} /> 
+        <Route path='/bus/signup' element={<SignupForm/>}/>
+        <Route path='/bus/adminpage' element={<AdminConsole/>}/>
+        <Route path='/bus/signinAdmin' element={<SigninAdmin/>}/>
+        <Route path='/bus/login' element={<SigninForm/>}/>
+        <Route path="/bus/home" element={<QRScanner />} /> 
+        <Route path="/bus/add-student" element={<AddStudentDetails />} />
+        <Route path="/bus/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );
