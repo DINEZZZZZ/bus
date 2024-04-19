@@ -25,7 +25,7 @@ const navigateTO = ()=>{
     }
     
     const handleSubmit = async (e) => {
-        e.preventDefault();
+     
         setLoading(true);
        if(cred.user === username && cred.passwoed === password){
         navigate('/bus/adminpage')

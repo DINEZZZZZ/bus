@@ -9,6 +9,8 @@ import SignupForm from './Signup';
 import SigninForm from './Login';
 import SigninAdmin from './AdminLogin';
 import AdminConsole from './AdminChoose';
+import BusDetails from './BusDetails';
+import DriverDetails from './DriverDetails';
 
 
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/bus/home" element={<QRScanner />} /> 
         <Route path="/bus/add-student" element={<AddStudentDetails />} />
         <Route path="/bus/admin" element={<AdminPage />} />
+        <Route path="/bus/bus" element={<BusDetails />} />
+        <Route path="/bus/Driver" element={<DriverDetails />} />
       </Routes>
     </Router>
   );

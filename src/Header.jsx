@@ -20,7 +20,7 @@ function Header() {
 
  
   return (
-    <header className="bg-orange-500 text-white py-4 px-4">
+    <header className="bg-orange-500  text-white py-4 px-4">
       <div className="container mx-auto flex items-center justify-between">
       <span className='text-3xl font-bold'><FaBus/></span>
         <div className="flex items-center">
