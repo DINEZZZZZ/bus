@@ -3,16 +3,23 @@ import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
-    <div className="flex justify-center items-center  h-screen bg-gray-100">
-      <div className="container h-full mx-auto px-4 py-60" style={{backgroundImage: `url('https://tse1.mm.bing.net/th?id=OIP.3VppdYL7ZgSP8CBftaDj0wHaD_&pid=Api&P=0&h=180)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-      <h1 className="text-4xl text-center font-bold mb-10">Welcome to our App!</h1>
-        <div className='flex justify-center '>
+    <div   className="flex justify-center items-center  h-screen">
+      
+      <div className="container h-full mx-auto  " >
         
-        <img src="https://tse1.mm.bing.net/th?id=OIP.ZBumfIZe3ZlL-vhW40nDXgHaGF&pid=Api&P=0&h=180" alt="" />
+        
+     
+      <img className='w-full h-72' src='https://tse3.mm.bing.net/th?id=OIP.m46mHgu3TkjfH5cc7w8jQwHaE3&pid=Api&P=0&h=180' alt="" />
+      <h1 className="text-4xl text-center font-bold mb-5">Welcome to our App!</h1>
+      <p className='text-center font-semibold text-lg mb-1'>Students Security Scanner</p>
+        <div className='flex justify-center '>
+          
+        
+        <img src="https://www.pngall.com/wp-content/uploads/4/Side-View-School-Bus-Transparent.png" alt="" />
         </div>
         
 
-        <p className="text-2xl text-center mt-6 mb-6">Choose to explore!</p>
+        <p className="text-2xl font-semibold text-center mt-6 mb-6">Choose to explore!</p>
         <div className="flex flex-row justify-center gap-4">
           <Link to="/bus/signup" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Sign Up
@@ -20,8 +27,11 @@ const LandingPage = () => {
           <Link to="/bus/login" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             Sign In
           </Link>
-        </div>
+          
+        </div >
+        <img src='https://webstockreview.net/images/garden-clipart-front-yard-8.png' alt="" />
       </div>
+      
     </div>
   );
 };

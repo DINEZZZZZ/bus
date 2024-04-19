@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import { FaUserCircle, FaSignOutAlt, FaBus } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -20,14 +20,14 @@ function Header() {
 
  
   return (
-    <header className="bg-blue-500 text-white py-4 px-4">
+    <header className="bg-orange-500 text-white py-4 px-4">
       <div className="container mx-auto flex items-center justify-between">
-      <img src="https://tse2.mm.bing.net/th?id=OIP.UCitU1X3uVQ6Hc8A9cnuIgHaEF&pid=Api&P=0&h=180" alt="Logo" className="w-20 h-10 mr-2" />
+      <span className='text-3xl font-bold'><FaBus/></span>
         <div className="flex items-center">
           
-          <h1 className="text-lg font-bold">Student Safty Tracker</h1>
+          <h1 className="text-xl  text-black font-bold">Student Safty Tracker</h1>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-1">
           
           <FaUserCircle onClick={()=>AdminPage()} className="text-xl mr-4" />
           <FaSignOutAlt onClick={()=>navigateTO()} className="text-xl" />

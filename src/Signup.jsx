@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaBus } from 'react-icons/fa';
 
 
 const SignupForm = () => {
@@ -52,19 +52,16 @@ const SignupForm = () => {
 
   return (
     <div >
-      <div className='flex  justify-between px-6 py-2'> 
-    
-      <h1 className="text-3xl font-bold text-center  mb-2">   Signup</h1>
+       <div className='flex bg-yellow-600 justify-between items-center px-2 py-2'> 
       <span onClick={()=>navigateTO()} className='text-2xl '><FaArrowLeft/></span> 
-      
-      </div>
-      
+    <h1 className="text-3xl font-bold text-center  mb-2">SignUp</h1>
+    <span className='text-2xl'><FaBus/></span>
+    </div>
+    <img className='w-full h-44' src='https://tse3.mm.bing.net/th?id=OIP.m46mHgu3TkjfH5cc7w8jQwHaE3&pid=Api&P=0&h=180' alt="" />
      
     
-      <form style={{backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20200410/pngtree-creative-cartoon-hand-drawn-sky-clouds-image_333701.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-      <div className='flex justify-center'>
-    <img src="https://tse1.mm.bing.net/th?id=OIP.ZBumfIZe3ZlL-vhW40nDXgHaGF&pid=Api&P=0&h=180" alt="" />
-    </div>
+      <form className="mx-auto max-w-md bg-white shadow-md rounded px-8    pb-8 mb-4" onSubmit={handleSubmit}>
+    
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstname">
             First Name:
@@ -172,6 +169,7 @@ const SignupForm = () => {
           {loading ? 'Signing up...' : 'Sign Up'}
         </button>
       </form>
+      <img src='https://webstockreview.net/images/garden-clipart-front-yard-8.png' alt="" />
     </div>
   );
 };
