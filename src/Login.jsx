@@ -39,11 +39,16 @@ return (
       <div className='flex  justify-between px-6 py-2'> 
     
     <h1 className="text-3xl font-bold text-center  mb-2">   Login</h1>
+
     <span onClick={()=>navigateTO()} className='text-2xl '><FaArrowLeft/></span> 
     
     </div>
-    <form style={{backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20200410/pngtree-creative-cartoon-hand-drawn-sky-clouds-image_333701.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-      
+
+   
+    <form style={{backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20200410/pngtree-creative-cartoon-hand-drawn-sky-clouds-image_333701.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="mx-auto max-w-md pt-64  bg-white shadow-md rounded px-8  py-96 mb-4" onSubmit={handleSubmit}>
+    <div className='flex justify-center'>
+    <img src="https://tse1.mm.bing.net/th?id=OIP.ZBumfIZe3ZlL-vhW40nDXgHaGF&pid=Api&P=0&h=180" alt="" />
+    </div>
         <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
             Email:

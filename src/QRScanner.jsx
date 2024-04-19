@@ -20,14 +20,22 @@ function QRScanner() {
   const initScanner = () => {
     scanner = new Instascan.Scanner({ video: videoRef.current });
     scanner.addListener('scan', handleScan);
-    Instascan.Camera.getCameras().then((cameras) => {
+  
+    // Get available cameras
+    Instascan.Camera.getCameras().then(cameras => {
+      // If there are cameras available
       if (cameras.length > 0) {
-        scanner.start(cameras[0]);
+        // Find the back camera
+        const backCamera = cameras.find(camera => camera.name.includes('back'));
+        
+        // If back camera is found, start scanner with it, else start with the first camera
+        scanner.start(backCamera || cameras[0]);
       } else {
         console.error('No cameras found.');
       }
     }).catch(err => console.error(err));
   };
+  
 
   const handleScan = (content) => {
     const dateTime = new Date().toLocaleString();
