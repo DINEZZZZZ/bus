@@ -1,177 +1,79 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaBus } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
 
+import Footer from './Footer';
+import Header from './Header';
 
-const SignupForm = () => {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+function ParentPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [scannedData, setScannedData] = useState([]);
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    const data = localStorage.getItem('scannedData');
+    if (data) {
+      setScannedData(JSON.parse(data));
+    }
+  }, []);
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    setLoading(true);
-    if (password !== confirmPassword) {
-      setError("Passwords don't match");
-      setLoading(false);
-      return;
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+
+    // You can replace this simple check with more secure authentication methods
+    if (username === 'parent' && password === 'password') {
+      setIsLoggedIn(true);
+    } else {
+      alert('Invalid username or password');
     }
-    try {
-      const response = await axios.post('http://localhost:8080/api/user/signup', {
-        firstname,
-        lastname,
-        email,
-        phoneNumber,
-        password,
-        confirmPassword,
-        username
-      });
-      console.log('Signup successful:', response.data);
-      navigate('/bus/login');
-      // Navigate to the sign-in page after successful sign-up
-    } catch (error) {
-        navigate('/bus/login');
-      console.error('Signup failed:', error.response ? error.response.data : error.message);
-      //setError(error.response ? error.response.data.message : error.message);
-    }
-    setLoading(false);
   };
 
-  const navigateTO = ()=>{
-    navigate('/bus/')
- }
-
-
   return (
-    <div >
-       <div className='flex bg-yellow-600 justify-between items-center px-2 py-2'> 
-      <span onClick={()=>navigateTO()} className='text-2xl '><FaArrowLeft/></span> 
-    <h1 className="text-3xl font-bold text-center  mb-2">SignUp</h1>
-    <span className='text-2xl'><FaBus/></span>
-    </div>
-    <img className='w-full h-44' src='https://tse3.mm.bing.net/th?id=OIP.m46mHgu3TkjfH5cc7w8jQwHaE3&pid=Api&P=0&h=180' alt="" />
-     
-    
-      <form className="mx-auto max-w-md bg-white shadow-md rounded px-8    pb-8 mb-4" onSubmit={handleSubmit}>
-    
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstname">
-            First Name:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="firstname"
-            type="text"
-            placeholder="First Name"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            required
-          />
+    <div className="container mx-auto">
+      <Header />
+      {isLoggedIn ? (
+        <div className="border border-gray-300 rounded-md p-4">
+          <h2 className="font-bold mb-2 text-2xl md:text-4xl flex justify-center text-orange-600">Student Status</h2>
+          <div className="space-y-4">
+            {scannedData.map((item, index) => (
+              <div key={index} className="scanned-item bg-gray-100 p-6 rounded-md flex gap-4 flex-col">
+                <p><strong className="text-lg md:text-2xl">Student Details: {convertToPlainText(item.content)}</strong> </p>
+                <p><strong className={`text-base md:text-xl ${item.status === 'DROPPED' ? 'text-green-500' : item.status === 'ON THE BUS' ? 'text-blue-500' : ''}`}>Status: {item.status}</strong></p>
+                <p><strong className="text-sm md:text-base text-gray-500">Picked Time: {item.dateTime}</strong> </p>
+                {item.status === 'DROPPED' && <p><strong className="text-sm md:text-base text-red-500">Dropped Time: {item.droppedDateTime}</strong></p>}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastname">
-            Last Name:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="lastname"
-            type="text"
-            placeholder="Last Name"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-            Email:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
-            Phone Number:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="phoneNumber"
-            type="tel"
-            placeholder="Phone Number"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-            Username:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-            Password:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
-            Confirm Password:
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="confirmPassword"
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <div className="text-red-500 mb-4">{error}</div>}
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-          disabled={loading}
-        >
-          {loading ? 'Signing up...' : 'Sign Up'}
-        </button>
-      </form>
-      <img src='https://webstockreview.net/images/garden-clipart-front-yard-8.png' alt="" />
+      ) : (
+        <form onSubmit={handleLogin} className="flex flex-col items-center mt-8">
+          <input type="text" name="username" placeholder="Username" className="border border-gray-300 rounded-md px-4 py-2 mb-4" />
+          <input type="password" name="password" placeholder="Password" className="border border-gray-300 rounded-md px-4 py-2 mb-4" />
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</button>
+        </form>
+      )}
+      <Footer />
     </div>
   );
-};
+}
 
-export default SignupForm;
+function convertToPlainText(data) {
+  try {
+    // Attempt to parse the JSON string
+    const parsedData = JSON.parse(data);
+
+    // Initialize an empty string to store the plain text
+    let plainText = '';
+
+    // Iterate over the key-value pairs of the parsed data and append them to the plain text
+    for (const [key, value] of Object.entries(parsedData)) {
+      plainText += ` ${value},\n`;
+    }
+
+    return plainText;
+  } catch (error) {
+    // If parsing fails, return the original data
+    return data;
+  }
+}
+
+export default ParentPage;

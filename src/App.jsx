@@ -11,6 +11,7 @@ import SigninAdmin from './AdminLogin';
 import AdminConsole from './AdminChoose';
 import BusDetails from './BusDetails';
 import DriverDetails from './DriverDetails';
+import ParentPage from './Signup';
 
 
 
@@ -19,7 +20,6 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/bus/" element={<LandingPage />} /> 
-        <Route path='/bus/signup' element={<SignupForm/>}/>
         <Route path='/bus/adminpage' element={<AdminConsole/>}/>
         <Route path='/bus/signinAdmin' element={<SigninAdmin/>}/>
         <Route path='/bus/login' element={<SigninForm/>}/>
@@ -28,6 +28,7 @@ function App() {
         <Route path="/bus/admin" element={<AdminPage />} />
         <Route path="/bus/bus" element={<BusDetails />} />
         <Route path="/bus/Driver" element={<DriverDetails />} />
+        <Route path="/bus/Parent" element={<ParentPage />} />
       </Routes>
     </Router>
   );

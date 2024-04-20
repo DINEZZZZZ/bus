@@ -8,7 +8,6 @@ import Footer from './Footer';
 function AddStudentDetails() {
   const [studentDetails, setStudentDetails] = useState({});
   const [showToaster, setShowToaster] = useState(false);
- 
   const [showDownloadBtn, setShowDownloadBtn] = useState(false);
 
   const handleSubmit = (event) => {
@@ -19,12 +18,6 @@ function AddStudentDetails() {
       details[key] = value;
     });
     setStudentDetails(details);
-
-    // Convert studentDetails to text format
-    const textFormat = JSON.stringify(details);
-
-    // Store data in local storage
-    localStorage.setItem('studentDetails', textFormat);
 
     // Clear the input fields
     event.target.reset();
@@ -62,22 +55,16 @@ function AddStudentDetails() {
     downloadLink.click();
     document.body.removeChild(downloadLink);
 
-    // Convert studentDetails to text format for download toaster
-    const textFormat = JSON.stringify(studentDetails);
-
-
-
     // Show success notification for download
     toast.info('QR Code downloaded successfully!');
   };
 
   return (
-    <div className="container mx-auto ">
-      <Navbar/>
+    <div className="container mx-auto">
+      <Navbar />
       <ToastContainer />
-    
       <form onSubmit={handleSubmit} className="space-y-4 p-4">
-      <h1 className="text-2xl font-bold mb-4">Add Student Details For Genarate QR </h1>
+        <h1 className="text-2xl font-bold mb-4">Add Student Details For Generate QR </h1>
         <div>
           <label htmlFor="studentName" className="block font-medium">
             Student Name
@@ -88,6 +75,19 @@ function AddStudentDetails() {
             name="studentName"
             className="border border-gray-300 rounded-md px-4 py-2 w-full"
             placeholder="Enter student name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="parentName" className="block font-medium">
+            Parent Name
+          </label>
+          <input
+            type="text"
+            id="parentName"
+            name="parentName"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full"
+            placeholder="Enter parent name"
             required
           />
         </div>
@@ -147,7 +147,7 @@ function AddStudentDetails() {
       <div id="qrCodeContainer" className="rounded-md pl-6">
         {showToaster && <QRCode id="qrCode" value={JSON.stringify(studentDetails)} size={200} />}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

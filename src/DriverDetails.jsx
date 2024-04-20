@@ -54,7 +54,6 @@ function DriverDetails() {
             <p><FontAwesomeIcon icon={faBus} className="mr-2" /><strong>Bus Number:</strong> {driver.busNumber}</p>
             <p><FontAwesomeIcon icon={faRoute} className="mr-2" /><strong>Route:</strong> {driver.route}</p>
             <p><FontAwesomeIcon icon={faSchool} className="mr-2" /><strong>School:</strong> {driver.school}</p>
-
             </div>
        
           </div>

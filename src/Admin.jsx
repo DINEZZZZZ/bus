@@ -9,14 +9,13 @@ function AdminPage() {
     const data = localStorage.getItem('scannedData');
     if (data) {
       setScannedData(JSON.parse(data));
+     
     }
   }, []);
-
+ 
   return (
     <div className="container mx-auto ">
-
       <Navbar/>
-     
       <div className="border border-gray-300 rounded-md p-4">
         <h2 className="font-bold mb-2 text-2xl  md:text-4xl flex justify-center text-orange-600">Student Status</h2>
         <div className="space-y-4">
@@ -26,6 +25,7 @@ function AdminPage() {
               <p><strong className={`text-base md:text-xl ${item.status === 'DROPPED' ? 'text-green-500' : item.status === 'ON THE BUS' ? 'text-blue-500' : ''}`}>Status: {item.status}</strong></p>
               <p><strong className="text-sm md:text-base text-gray-500">Picked Time: {item.dateTime}</strong> </p>
               {item.status === 'DROPPED' && <p><strong className="text-sm md:text-base text-red-500">Dropped Time: {item.droppedDateTime}</strong></p>}
+
             </div>
           ))}
         </div>

@@ -15,7 +15,7 @@ const [error, setError] = useState(null);
 const navigate = useNavigate();
 
 const navigateTO = ()=>{
-    navigate('/bus/home')
+    navigate('/bus/')
  }
 
     const cred = {
@@ -82,6 +82,7 @@ return (
         type="submit"
         disabled={loading}
         >
+            
         {loading ? 'Signing in...' : 'Sign In'}
         </button>
     </form>

@@ -21,11 +21,14 @@ const LandingPage = () => {
 
         <p className="text-2xl font-semibold text-center mt-6 mb-6">Choose to explore!</p>
         <div className="flex flex-row justify-center gap-4">
-          <Link to="/bus/signup" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Sign Up
+          <Link to="/bus/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            School Login
           </Link>
-          <Link to="/bus/login" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            Sign In
+          <Link to="/bus/signinAdmin" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Admin
+          </Link>
+          <Link to="/bus/Parent" className="bg-rose-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Parent Login
           </Link>
           
         </div >
