@@ -20,7 +20,7 @@ function ParentPage() {
     const password = e.target.password.value;
 
     // You can replace this simple check with more secure authentication methods
-    if (username === 'parent' && password === 'password') {
+    if (username === 'Parent' && password === 'Parent@123') {
       setIsLoggedIn(true);
     } else {
       alert('Invalid username or password');
